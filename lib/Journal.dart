@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
+final primaryColor = const Color(0xff9fb2d1);
+
 class Journal extends StatelessWidget {
   final _titleController = TextEditingController();
   final _journalController = TextEditingController();
 
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: primaryColor,
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
