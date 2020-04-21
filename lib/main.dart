@@ -3,6 +3,7 @@ import 'package:evenmind/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'home_widget.dart';
 import 'package:evenmind/first_view.dart';
+import 'package:evenmind/widgets/provider_widget.dart';
 
 void main() => runApp(MyApp());
 
@@ -16,7 +17,12 @@ class MyApp extends StatelessWidget {
         title: "EvenMind",
         home: HomeController(),
         routes: <String, WidgetBuilder>{
-          '/signUp': (BuildContext context) => SignUpView(),
+          '/signUp': (BuildContext context) => SignUpView(
+                authFormType: AuthFormType.signUp,
+              ),
+          '/signIn': (BuildContext context) => SignUpView(
+                authFormType: AuthFormType.signIn,
+              ),
           '/home': (BuildContext context) => HomeController()
         },
       ),
@@ -39,17 +45,4 @@ class HomeController extends StatelessWidget {
       },
     );
   }
-}
-
-class Provider extends InheritedWidget {
-  final AuthService auth;
-  Provider({Key key, Widget child, this.auth}) : super(key: key, child: child);
-
-  @override
-  bool updateShouldNotify(InheritedWidget oldWidget) {
-    return true;
-  }
-
-  static Provider of(BuildContext context) =>
-      (context.dependOnInheritedWidgetOfExactType<Provider>());
 }

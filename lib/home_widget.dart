@@ -1,9 +1,11 @@
 import 'package:evenmind/Journal.dart';
+import 'package:evenmind/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'placeholder_widget.dart';
 import 'Journal.dart';
 import 'Journal_Library.dart';
 import 'j_Library.dart';
+import 'package:evenmind/widgets/provider_widget.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -22,6 +24,24 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("EvenMind"),
+        backgroundColor: primaryColor,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.undo),
+            onPressed: () async {
+              try {
+                AuthService auth = Provider.of(context).auth;
+                await auth.signOut();
+                print("Signed Out!");
+              } catch (e) {
+                print(e);
+              }
+            },
+          )
+        ],
+      ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,

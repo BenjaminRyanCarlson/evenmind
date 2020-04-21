@@ -2,6 +2,7 @@ import 'package:evenmind/Journal.dart';
 import 'package:flutter/material.dart';
 
 class Journal_Library extends StatefulWidget {
+  final primaryColor = const Color(0xff9fb2d1);
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -12,7 +13,7 @@ class _MyAppState extends State<Journal_Library> {
     // TODO: implement build
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.blueGrey,
+        backgroundColor: primaryColor,
         body: ListView.builder(
           itemBuilder: (context, index) {
             return TileItem(num: index);
@@ -34,7 +35,7 @@ class TileItem extends StatelessWidget {
     return Hero(
       tag: "card$num",
       child: Card(
-        color: Colors.teal,
+        color: primaryColor,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(8.0),
@@ -49,7 +50,7 @@ class TileItem extends StatelessWidget {
                   aspectRatio: 100.0 / 40.0,
                 ),
                 Material(
-                  color: Colors.cyan,
+                  color: primaryColor,
                   child: ListTile(
                     title: Text("Item $num"),
                     subtitle: Text("This is item #$num"),
