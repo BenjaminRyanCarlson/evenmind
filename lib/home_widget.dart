@@ -1,9 +1,11 @@
 import 'package:evenmind/Journal.dart';
+import 'package:evenmind/edit_journal.dart';
 import 'package:evenmind/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'placeholder_widget.dart';
 import 'Journal.dart';
 import 'Journal_Library.dart';
+import 'package:evenmind/models/journal_data.dart';
 import 'j_Library.dart';
 import 'package:evenmind/widgets/provider_widget.dart';
 
@@ -17,7 +19,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = [
-    j_Library(),
+    j_Library(jData, journalList),
     PlaceholderWidget(Colors.blueGrey),
     PlaceholderWidget(Colors.cyanAccent)
   ];
@@ -26,7 +28,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text("EvenMind"),
-        backgroundColor: primaryColor,
+        backgroundColor: Colors.blueGrey,
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.undo),
