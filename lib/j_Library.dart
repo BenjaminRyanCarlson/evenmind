@@ -52,6 +52,7 @@ class j_Library extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // TODO: implement build
+      backgroundColor: Colors.blueGrey,
       body: Container(
           child: Column(children: <Widget>[
         newEntry(context),
@@ -83,9 +84,9 @@ class j_Library extends StatelessWidget {
         new Container(
           width: MediaQuery.of(context).size.width,
           child: Padding(
-            padding: const EdgeInsets.only(left: 100, right: 100),
+            padding: const EdgeInsets.only(left: 20, right: 20),
             child: Card(
-              color: Colors.orangeAccent,
+              color: primaryColor,
               child: InkWell(
                 child: Column(
                   children: <Widget>[
@@ -95,9 +96,10 @@ class j_Library extends StatelessWidget {
                         children: <Widget>[
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 50.0, bottom: 50.0),
+                                const EdgeInsets.only(top: 0.0, bottom: 3.0),
                             child: Text(
-                              journal.title,
+                              journal.body,
+                              overflow: TextOverflow.ellipsis,
                               style:
                                   TextStyle(fontSize: 24, color: Colors.white),
                             ),
@@ -110,7 +112,8 @@ class j_Library extends StatelessWidget {
                       child: Row(
                         children: <Widget>[
                           Text(
-                            journal.body,
+                            journal.title,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
@@ -201,9 +204,14 @@ class j_Library extends StatelessWidget {
 
   Widget newEntry(context) {
     return Material(
-      color: Colors.white,
+      color: Colors.blueGrey,
       child: RaisedButton(
-        child: Text("New Entry"),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+        child: Text(
+          "New Entry",
+          style: TextStyle(color: Colors.blueGrey),
+        ),
         color: Colors.white,
         onPressed: () async {
           Navigator.push(

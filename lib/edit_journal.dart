@@ -138,7 +138,11 @@ class _EditJournalState extends State<EditJournal> {
         onPressed: () async {
           final uid = await Provider.of(context).auth.getCurrentUID();
 
-          db.collection('journalData').add({
+          await db
+              .collection('userData')
+              .document(uid)
+              .collection('journalData')
+              .add({
             'userData': uid,
             'body': _journalController.text,
             'title': _titleController.text
