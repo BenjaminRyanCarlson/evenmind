@@ -8,6 +8,8 @@ import 'Journal_Library.dart';
 import 'package:evenmind/models/journal_data.dart';
 import 'j_Library.dart';
 import 'package:evenmind/widgets/provider_widget.dart';
+import 'meditate.dart';
+import 'settingsView.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -20,8 +22,8 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     j_Library(jData, journalList),
-    PlaceholderWidget(Colors.blueGrey),
-    PlaceholderWidget(Colors.cyanAccent)
+    Meditate(),
+    Settings()
   ];
   @override
   Widget build(BuildContext context) {
